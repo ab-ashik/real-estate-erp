@@ -1,46 +1,74 @@
-# Branching model (production-house style)
+# Branching (simple production style — solo friendly)
 
-Even with a single developer, we keep clear branches so releases stay safe.
+Keep it light. You are the only developer; do not over-manage branches.
 
-## Branches
+## Branches we use
 
-| Branch | Purpose | Who merges |
-|---|---|---|
-| `main` | Production-ready only (tagged releases) | Via PR from `release/*` or `hotfix/*` |
-| `develop` | Integration branch — accepted work ready for next release | Via PR from `feature/*` |
-| `feature/*` | Active development | Developer |
-| `release/*` | Release prep / freeze (optional) | From `develop` → then to `main` |
-| `hotfix/*` | Urgent production fixes | Into `main` and back to `develop` |
+| Branch | Purpose |
+|---|---|
+| `main` | Stable / client-demo ready only |
+| `develop` | **Daily work** (default branch) |
+| `feature/<name>` | Optional — only for a bigger sprint chunk |
 
-## Naming
+That is enough. No required `release/*` or `hotfix/*` unless you really need them later.
 
-```text
-feature/sprint-0-odoo18-scaffold
-feature/sprint-1-security-roles
-feature/allotment-confirm-lock-flat
-hotfix/fix-allottee-status-label
-release/1.0.0
+## Day-to-day (solo)
+
+```bash
+git checkout develop
+git pull
+
+# small work → commit on develop
+git add -A
+git commit -m "feat: short clear message"
+git push origin develop
 ```
 
-## Solo workflow (still production style)
+## Bigger sprint (optional feature branch)
 
-1. Start from latest `develop`:
-   ```bash
-   git checkout develop
-   git pull
-   git checkout -b feature/<short-name>
-   ```
-2. Commit on the feature branch (small, clear commits).
-3. Push feature branch and open PR → `develop`.
-4. When a release is ready: PR `develop` → `main` (or `release/x.y.z` → `main`).
-5. Tag on `main`: `v1.0.0`.
+```bash
+git checkout develop
+git pull
+git checkout -b feature/sprint-1-security-roles
 
-## Never
+# ... work, commit ...
+git push -u origin feature/sprint-1-security-roles
 
-- Commit directly to `main` for normal work  
-- Force-push `main` / `develop`  
-- Mix unrelated features on one long-lived feature branch  
+# when done, merge into develop
+git checkout develop
+git merge feature/sprint-1-security-roles
+git push origin develop
+```
 
-## Current state
+## When to update `main`
 
-- Sprint 0 scaffold landed on `feature/sprint-0-odoo18-scaffold` and merged to `develop`.
+Only when a milestone is stable (e.g. Sprint 0 done, C1 demo ready):
+
+```bash
+git checkout main
+git pull
+git merge develop
+git push origin main
+```
+
+Optional tag: `git tag v0.1.0 && git push origin v0.1.0`
+
+## Naming (keep short)
+
+```text
+feature/sprint-1-security
+feature/allotment-confirm
+```
+
+## Rules (simple)
+
+1. Do normal work on **`develop`**
+2. Use **`feature/*`** only if the change is large or risky
+3. Update **`main`** only for stable milestones
+4. Do not force-push `main` or `develop`
+
+## Current
+
+- Repo: `https://github.com/ab-ashik/real-estate-erp.git`
+- Sprint 0 scaffold is on `develop` (and feature branch history)
+- Default working branch: **`develop`**
