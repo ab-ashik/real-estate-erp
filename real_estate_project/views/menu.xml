@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_re_root" name="Real Estate" sequence="25"/>
+    <menuitem id="menu_re_config" name="Inventory" parent="menu_re_root" sequence="10"/>
+    <menuitem id="menu_re_project" name="Projects" parent="menu_re_config" action="action_re_project" sequence="10"/>
+    <menuitem id="menu_re_flat" name="Flats" parent="menu_re_config" action="action_re_flat" sequence="20"/>
+</odoo>

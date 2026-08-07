@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_re_allotment" name="Allotments" parent="real_estate_project.menu_re_root" action="action_re_allotment" sequence="20"/>
+</odoo>

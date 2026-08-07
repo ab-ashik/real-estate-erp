@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="portal_my_re_home" name="My Real Estate">
+        <t t-call="portal.portal_layout">
+            <div class="container">
+                <h2>My Real Estate</h2>
+                <p>Portal pages will be completed in later sprints.</p>
+            </div>
+        </t>
+    </template>
+</odoo>
