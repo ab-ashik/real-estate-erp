@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_re_allotment_tree" model="ir.ui.view">
+        <field name="name">re.allotment.list</field>
+        <field name="model">re.allotment</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="project_id"/>
+                <field name="flat_id"/>
+                <field name="net_price_bdt"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+    <record id="view_re_allotment_form" model="ir.ui.view">
+        <field name="name">re.allotment.form</field>
+        <field name="model">re.allotment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,cancelled"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="partner_id"/>
+                        <field name="project_id"/>
+                        <field name="flat_id" domain="[('project_id', '=', project_id), ('status', '=', 'available')]"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="net_price_bdt"/>
+                        <field name="booking_money_bdt"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+    <record id="action_re_allotment" model="ir.actions.act_window">
+        <field name="name">Allotments</field>
+        <field name="res_model">re.allotment</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

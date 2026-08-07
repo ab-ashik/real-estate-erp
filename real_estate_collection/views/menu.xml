@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_re_payment_submission" name="Payment Submissions" parent="real_estate_project.menu_re_root" action="action_re_payment_submission" sequence="40"/>
+</odoo>
