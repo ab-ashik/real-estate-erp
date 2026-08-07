@@ -1,0 +1,28 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Odoo
+*.pyc
+.idea/
+.vscode/
+*.egg-info/
+dist/
+build/
+
+# OS / editor
+.DS_Store
+*~
+*.swp
+*.swo
+
+# Env / secrets
+.env
+*.pem
+credentials.json
+
+# Local filestore / logs (if any)
+filestore/
+*.log
